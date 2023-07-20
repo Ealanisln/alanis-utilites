@@ -2,7 +2,14 @@
 
 import axios from "axios";
 import React, { useState, ChangeEvent } from "react";
-import { Select, Heading } from "@chakra-ui/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Select,
+  Heading,
+} from "@chakra-ui/react";
 
 interface ConversionResult {
   new_amount: number;
@@ -50,63 +57,66 @@ const Converter = () => {
   return (
     <div className="flex justify-center">
       <div className="w-full sm:w-1/2 px-4 py-8">
-        <Heading mb="1em">Currency converter</Heading>
-        <div className="mb-4">
-          <label className="block mb-2">Enter Amount (numbers only):</label>
-          <input
-            type="text"
-            className="w-full p-2 border border-gray-300 rounded"
-            value={inputValue}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div style={{ flex: 1, marginRight: "1rem" }}>
-            <Select
-              placeholder="From"
-              value={selectedCurrency}
-              onChange={(e) => setSelectedCurrency(e.target.value)}
-            >
-              <option value="MXN">MXN</option>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="USD">USD</option>
-            </Select>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Select
-              placeholder="To"
-              value={selectedCurrencyTo}
-              onChange={(e) => setSelectedCurrencyTo(e.target.value)}
-            >
-              <option value="MXN">MXN</option>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="USD">USD</option>
-            </Select>
-          </div>
-        </div>
+        <Card>
+          <CardBody>
+            <Heading mb="1em">Currency converter</Heading>
+            <div className="mb-4">
+              <label className="block mb-2">Enter Amount (numbers only):</label>
+              <input
+                type="number"
+                className="w-full p-2 border border-gray-300 rounded"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div style={{ flex: 1, marginRight: "1rem" }}>
+                <Select
+                  placeholder="From"
+                  value={selectedCurrency}
+                  onChange={(e) => setSelectedCurrency(e.target.value)}
+                >
+                  <option value="MXN">MXN</option>
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="USD">USD</option>
+                </Select>
+              </div>
+              <div style={{ flex: 1 }}>
+                <Select
+                  placeholder="To"
+                  value={selectedCurrencyTo}
+                  onChange={(e) => setSelectedCurrencyTo(e.target.value)}
+                >
+                  <option value="MXN">MXN</option>
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="USD">USD</option>
+                </Select>
+              </div>
+            </div>
 
-        <br />
-        <div className="mb-4">
-          <button
-            onClick={callAPI}
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Convert
-          </button>
-        </div>
-        {result && (
-          <div>
-            <Heading as="h4" size="md">
-              Result:
-            </Heading>
-            <Heading as="h3" size="lg">
-              {result.new_amount} {result.new_currency}
-            </Heading>
-          </div>
-        )}
-        <br />
+            <br />
+            <div className="mb-4">
+              <button
+                onClick={callAPI}
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded"
+              >
+                Convert
+              </button>
+            </div>
+            {result && (
+              <div>
+                <Heading as="h4" size="md">
+                  Result:
+                </Heading>
+                <Heading as="h3" size="lg">
+                  {result.new_amount} {result.new_currency}
+                </Heading>
+              </div>
+            )}
+          </CardBody>
+        </Card>
       </div>
     </div>
   );
