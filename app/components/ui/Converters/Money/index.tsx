@@ -34,7 +34,7 @@ const Converter = () => {
         amount: inputValue,
       },
       headers: {
-        "X-RapidAPI-Key": "0d4240a0eemsh13763dc2f855769p1634fdjsn65dfda1cf294",
+        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_API_RAPID_KEY,
         "X-RapidAPI-Host": "currency-converter-by-api-ninjas.p.rapidapi.com",
       },
     };
