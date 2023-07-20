@@ -10,6 +10,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
+import { NextPage } from 'next';
+import axios from 'axios';
 
 interface LocationData {
   name: string;
@@ -41,7 +43,7 @@ const Weather = () => {
     }
   };
 
-  const apiKey = "cd078c138421ea231a4b9bdbf7fe3e02";
+  const apiKey = process.env.API_WEATHER_KEY;
 
   const searchCityByZipCode = async (
     zipCode: string
