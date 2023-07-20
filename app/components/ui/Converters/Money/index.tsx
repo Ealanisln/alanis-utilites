@@ -49,10 +49,8 @@ const Converter = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="w-full sm:w-1/2 px-4">
-        <Heading mb='1em'>
-        Currency converter
-        </Heading>
+      <div className="w-full sm:w-1/2 px-4 py-8">
+        <Heading mb="1em">Currency converter</Heading>
         <div className="mb-4">
           <label className="block mb-2">Enter Amount (numbers only):</label>
           <input
@@ -100,7 +98,12 @@ const Converter = () => {
         </div>
         {result && (
           <div>
-            <strong>Result:</strong> {result.new_amount} {result.new_currency}
+            <Heading as="h4" size="md">
+              Result:
+            </Heading>
+            <Heading as="h3" size="lg">
+              {result.new_amount} {result.new_currency}
+            </Heading>
           </div>
         )}
         <br />
